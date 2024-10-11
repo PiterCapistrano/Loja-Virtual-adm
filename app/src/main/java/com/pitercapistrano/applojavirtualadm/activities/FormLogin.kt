@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -41,9 +42,7 @@ private lateinit var binding: ActivityFormLoginBinding
 
             if (email == "pitercapistrano@gmail.com" && senha == "123456"){
                val snackbar = Snackbar.make(this, binding.main, "Login efetuado com sucesso!", Snackbar.LENGTH_SHORT)
-                snackbar.setBackgroundTint(Color.parseColor("#008105"))
-                snackbar.setTextColor(Color.WHITE)
-                snackbar.show()
+                Toast.makeText(this,"Login efetuado com sucesso!", Toast.LENGTH_SHORT).show()
                 binding.progressBar.visibility = View.VISIBLE
                 Handler().postDelayed({
                 goToHome()
