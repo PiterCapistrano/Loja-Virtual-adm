@@ -2,6 +2,7 @@ package com.pitercapistrano.applojavirtualadm.activities
 
 import android.content.Intent
 import android.graphics.Color
+import android.graphics.Paint.Style
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
@@ -53,7 +54,7 @@ private lateinit var binding: ActivityFormLoginBinding
                 snackbar.setTextColor(Color.WHITE)
                 snackbar.show()
             } else {
-                val snackbar = Snackbar.make(this, binding.main, "Email ou Senha inválidos", Snackbar.LENGTH_SHORT)
+                val snackbar = Snackbar.make(this, binding.main, "Email ou Senha inválidos!", Snackbar.LENGTH_SHORT)
                 snackbar.setBackgroundTint(Color.parseColor("#008105"))
                 snackbar.setBackgroundTint(Color.RED)
                 snackbar.show()
