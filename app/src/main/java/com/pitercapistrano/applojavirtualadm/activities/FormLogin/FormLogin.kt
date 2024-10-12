@@ -1,8 +1,7 @@
-package com.pitercapistrano.applojavirtualadm.activities
+package com.pitercapistrano.applojavirtualadm.activities.FormLogin
 
 import android.content.Intent
 import android.graphics.Color
-import android.graphics.Paint.Style
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
@@ -14,6 +13,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.snackbar.Snackbar
 import com.pitercapistrano.applojavirtualadm.R
+import com.pitercapistrano.applojavirtualadm.activities.Home.Home
 import com.pitercapistrano.applojavirtualadm.databinding.ActivityFormLoginBinding
 
 class FormLogin : AppCompatActivity() {

@@ -1,8 +1,10 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.AppLojaVirtualAdm" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.AppLojaVirtualAdm" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorSecondary">@color/black</item>
+        <item name="colorOnSecondary">@color/white</item>
     </style>
 
     <style name="Theme.AppLojaVirtualAdm" parent="Base.Theme.AppLojaVirtualAdm" />
