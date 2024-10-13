@@ -3,6 +3,7 @@ package com.pitercapistrano.applojavirtualadm.activities.Home
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.os.Handler
 import android.view.View
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -12,9 +13,11 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.ktx.Firebase
 import com.pitercapistrano.applojavirtualadm.R
 import com.pitercapistrano.applojavirtualadm.activities.CadastroProduto.CadastroProduto
+import com.pitercapistrano.applojavirtualadm.activities.EditarProduto.EditarProduto
 import com.pitercapistrano.applojavirtualadm.activities.FormLogin.FormLogin
 import com.pitercapistrano.applojavirtualadm.databinding.ActivityHomeBinding
 import com.pitercapistrano.applojavirtualadm.fragments.PedidosFragment
@@ -59,6 +62,7 @@ class Home : AppCompatActivity() {
                 binding.containerFragmentPedidos.visibility = View.GONE
                 binding.containerFragmentProdutos.visibility = View.VISIBLE
                 fragmentRender(R.id.containerFragmentProdutos, ProdutosFragment())
+                atualizarTela()
             }
         }
 
@@ -74,6 +78,7 @@ class Home : AppCompatActivity() {
                 binding.containerFragmentProdutos.visibility = View.GONE
                 binding.containerFragmentPedidos.visibility = View.VISIBLE
                 fragmentRender(R.id.containerFragmentPedidos, PedidosFragment())
+                atualizarTela()
             }
         }
 
@@ -82,6 +87,14 @@ class Home : AppCompatActivity() {
             goToLogin()
             Toast.makeText(this, "Usuário deslogado com sucesso!", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    // Sobrescreve onResume para atualizar a tela sempre que a atividade for retomada
+    override fun onResume() {
+        super.onResume()
+        Handler().postDelayed({
+            atualizarTela()
+        }, 2000)
     }
 
     private fun fragmentRender(containerId: Int, fragment: Fragment){
@@ -95,5 +108,15 @@ class Home : AppCompatActivity() {
         val intent = Intent(this, FormLogin::class.java)
         startActivity(intent)
         finish()
+    }
+
+
+    // Função para atualizar a tela
+    private fun atualizarTela() {
+        if (binding.containerFragmentProdutos.visibility == View.VISIBLE) {
+            fragmentRender(R.id.containerFragmentProdutos, ProdutosFragment())
+        } else if (binding.containerFragmentPedidos.visibility == View.VISIBLE) {
+            fragmentRender(R.id.containerFragmentPedidos, PedidosFragment())
+        }
     }
 }

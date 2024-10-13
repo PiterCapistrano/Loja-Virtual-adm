@@ -15,13 +15,12 @@
     android:gravity="center"
     android:background="@color/light_gray">
 
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewProdutos"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/produtos"
-        android:textSize="30sp"
-        android:textColor="@color/black"
-        android:gravity="center"/>
+
+        />
 
 </LinearLayout>
 </androidx.core.widget.NestedScrollView>

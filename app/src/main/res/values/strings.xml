@@ -11,5 +11,6 @@
     <string name="id_produto">Código</string>
     <string name="adiconar">Adicionar Produto</string>
     <string name="codigo">Código 0001</string>
+    <string name="atualizar_produto">Atualizar Produto</string>
 
 </resources>
