@@ -45,6 +45,7 @@ class Home : AppCompatActivity() {
         window.decorView.systemUiVisibility = View.GONE
 
         fragmentRender(R.id.containerFragmentProdutos, ProdutosFragment())
+        fragmentRender(R.id.containerFragmentPedidos, PedidosFragment())
 
         binding.btAdd.setOnClickListener{
             val intent = Intent(this, CadastroProduto::class.java)
