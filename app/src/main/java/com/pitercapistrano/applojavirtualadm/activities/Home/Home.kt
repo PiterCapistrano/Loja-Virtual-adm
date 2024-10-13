@@ -4,15 +4,18 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.ktx.Firebase
 import com.pitercapistrano.applojavirtualadm.R
 import com.pitercapistrano.applojavirtualadm.activities.CadastroProduto.CadastroProduto
+import com.pitercapistrano.applojavirtualadm.activities.FormLogin.FormLogin
 import com.pitercapistrano.applojavirtualadm.databinding.ActivityHomeBinding
 import com.pitercapistrano.applojavirtualadm.fragments.PedidosFragment
 import com.pitercapistrano.applojavirtualadm.fragments.ProdutosFragment
@@ -74,6 +77,11 @@ class Home : AppCompatActivity() {
             }
         }
 
+        binding.txtSair.setOnClickListener {
+            FirebaseAuth.getInstance().signOut()
+            goToLogin()
+            Toast.makeText(this, "Usuário deslogado com sucesso!", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun fragmentRender(containerId: Int, fragment: Fragment){
@@ -81,5 +89,11 @@ class Home : AppCompatActivity() {
         val fragmentTransaction = fragmentManager.beginTransaction()
         fragmentTransaction.add(containerId, fragment)
         fragmentTransaction.commit()
+    }
+
+    private fun goToLogin(){
+        val intent = Intent(this, FormLogin::class.java)
+        startActivity(intent)
+        finish()
     }
 }

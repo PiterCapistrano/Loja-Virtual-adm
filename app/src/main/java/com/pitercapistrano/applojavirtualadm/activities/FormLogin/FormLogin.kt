@@ -13,6 +13,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.pitercapistrano.applojavirtualadm.R
 import com.pitercapistrano.applojavirtualadm.activities.Home.Home
 import com.pitercapistrano.applojavirtualadm.databinding.ActivityFormLoginBinding
@@ -79,6 +80,16 @@ private lateinit var binding: ActivityFormLoginBinding
             snackbar.setBackgroundTint(Color.RED)
             snackbar.setTextColor(Color.WHITE)
             snackbar.show()
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        val usuarioAtual: FirebaseUser? = FirebaseAuth.getInstance().currentUser
+
+        if (usuarioAtual != null){
+            goToHome()
         }
     }
 }

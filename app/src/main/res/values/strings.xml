@@ -8,6 +8,8 @@
     <string name="sair">Sair</string>
     <string name="nome">Nome</string>
     <string name="preco">Preço</string>
+    <string name="id_produto">Código</string>
     <string name="adiconar">Adicionar Produto</string>
+    <string name="codigo">Código 0001</string>
 
 </resources>
