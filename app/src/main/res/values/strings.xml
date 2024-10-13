@@ -3,4 +3,11 @@
     <string name="email">Email</string>
     <string name="senha">Senha</string>
     <string name="entrar">Entrar</string>
+    <string name="produtos">Produtos</string>
+    <string name="pedidos">Pedidos</string>
+    <string name="sair">Sair</string>
+    <string name="nome">Nome</string>
+    <string name="preco">Preço</string>
+    <string name="adiconar">Adicionar Produto</string>
+
 </resources>
