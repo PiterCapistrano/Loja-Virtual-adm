@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.FirebaseAuth
 import com.pitercapistrano.applojavirtualadm.R
 import com.pitercapistrano.applojavirtualadm.activities.Home.Home
 import com.pitercapistrano.applojavirtualadm.databinding.ActivityFormLoginBinding
@@ -40,25 +41,20 @@ private lateinit var binding: ActivityFormLoginBinding
             val inputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
             inputMethodManager.hideSoftInputFromWindow(binding.root.windowToken, 0)
 
-            if (email == "pitercapistrano@gmail.com" && senha == "123456"){
-               val snackbar = Snackbar.make(this, binding.main, "Login efetuado com sucesso!", Snackbar.LENGTH_SHORT)
-                Toast.makeText(this,"Login efetuado com sucesso!", Toast.LENGTH_SHORT).show()
-                binding.progressBar.visibility = View.VISIBLE
-                Handler().postDelayed({
-                goToHome()
-                }, 3000)
-            } else if (email.isEmpty() || senha.isEmpty()){
+            if (email.isEmpty() || senha.isEmpty()){
                 val snackbar = Snackbar.make(this, binding.main, "Preencha todos os campos!", Snackbar.LENGTH_SHORT)
                 snackbar.setBackgroundTint(Color.RED)
                 snackbar.setTextColor(Color.WHITE)
                 snackbar.show()
-            } else {
+
+            } else if (email.equals("piteradm@gmail.com")){
+              autenticacaoAdm(email, senha)
+            } else{
                 val snackbar = Snackbar.make(this, binding.main, "Email ou Senha inválidos!", Snackbar.LENGTH_SHORT)
-                snackbar.setBackgroundTint(Color.parseColor("#008105"))
                 snackbar.setBackgroundTint(Color.RED)
+                snackbar.setTextColor(Color.WHITE)
                 snackbar.show()
             }
-
         }
 
     }
@@ -67,5 +63,22 @@ private lateinit var binding: ActivityFormLoginBinding
         val intet = Intent(this, Home::class.java)
         startActivity(intet)
         finish()
+    }
+
+    private fun autenticacaoAdm(email: String, senha: String){
+        FirebaseAuth.getInstance().signInWithEmailAndPassword(email, senha).addOnCompleteListener { autenticacao ->
+            if (autenticacao.isSuccessful){
+                Toast.makeText(this,"Login efetuado com sucesso!", Toast.LENGTH_SHORT).show()
+                binding.progressBar.visibility = View.VISIBLE
+                Handler().postDelayed({
+                    goToHome()
+                }, 3000)
+            }
+        }.addOnFailureListener {
+            val snackbar = Snackbar.make(this, binding.main, "Email ou Senha inválidos!", Snackbar.LENGTH_SHORT)
+            snackbar.setBackgroundTint(Color.RED)
+            snackbar.setTextColor(Color.WHITE)
+            snackbar.show()
+        }
     }
 }

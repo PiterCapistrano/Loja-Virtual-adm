@@ -10,6 +10,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import com.google.firebase.ktx.Firebase
 import com.pitercapistrano.applojavirtualadm.R
 import com.pitercapistrano.applojavirtualadm.activities.CadastroProduto.CadastroProduto
 import com.pitercapistrano.applojavirtualadm.databinding.ActivityHomeBinding
@@ -31,6 +32,8 @@ class Home : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+
 
         window.statusBarColor = Color.parseColor("#000000")
         window.decorView.systemUiVisibility = View.GONE
@@ -70,6 +73,7 @@ class Home : AppCompatActivity() {
                 fragmentRender(R.id.containerFragmentPedidos, PedidosFragment())
             }
         }
+
     }
 
     private fun fragmentRender(containerId: Int, fragment: Fragment){
