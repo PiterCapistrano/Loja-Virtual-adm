@@ -13,6 +13,9 @@
         android:theme="@style/Theme.AppLojaVirtualAdm"
         tools:targetApi="31">
         <activity
+            android:name=".activities.EditarPedido.EditarPedido"
+            android:exported="false" />
+        <activity
             android:name=".activities.EditarProduto.EditarProduto"
             android:exported="false" />
         <activity

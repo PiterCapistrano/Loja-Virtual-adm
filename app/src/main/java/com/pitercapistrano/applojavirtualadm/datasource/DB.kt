@@ -1,11 +1,14 @@
 package com.pitercapistrano.applojavirtualadm.datasource
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.content.Intent
 import android.net.Uri
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.toObject
 import com.google.firebase.storage.FirebaseStorage
+import com.pitercapistrano.applojavirtualadm.activities.Home.Home
 import com.pitercapistrano.applojavirtualadm.adapter.PedidoAdapter
 import com.pitercapistrano.applojavirtualadm.adapter.ProdutoAdapter
 import com.pitercapistrano.applojavirtualadm.model.Pedido
@@ -42,6 +45,7 @@ class DB {
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun getProdutos(listaProdutos: MutableList<Produto>, produtoAdapter: ProdutoAdapter){
         db.collection("Produtos").orderBy("nome").get().addOnCompleteListener { documento ->
             if (documento.isSuccessful){
@@ -112,6 +116,30 @@ class DB {
                     pedidoAdapter.notifyDataSetChanged()
                 }
             }
+        }
+    }
+
+    fun atualizarPedido(status_pagamento: String, status_entrega: String, usarioID: String, pedidoID: String){
+        db.collection("Usuario_Pedidos").document(usarioID).collection("Pedidos")
+            .document(pedidoID).update(
+                "status_pagamento", status_pagamento,
+                "status_entrega", status_entrega
+            ).addOnCompleteListener {
+
+            }.addOnFailureListener {
+
+            }
+    }
+
+    fun atualizarPedidoAdm(status_pagamento: String, status_entrega: String, pedidoID: String, context: Context){
+        db.collection("Pedidos_Adm").document(pedidoID).update(
+            "status_pagamento", status_pagamento,
+            "status_entrega", status_entrega
+        ).addOnCompleteListener {
+            val intent = Intent(context, Home::class.java)
+            context.startActivity(intent)
+        }.addOnFailureListener {
+
         }
     }
 }

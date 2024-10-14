@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.EditarPedido.EditarPedido"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ATUALIZAR PEDIDO"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Status de Pagamento:"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginHorizontal="20dp">
+
+        <RadioButton
+            android:id="@+id/btPgAprovado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pagamento Aprovado!"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:layout_marginTop="10dp"
+            />
+
+        <RadioButton
+            android:id="@+id/btPgEstornado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pagamento Estornado!"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:layout_marginTop="10dp"
+            />
+
+        <RadioButton
+            android:id="@+id/btPgCancelado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pagamento Cancelado!"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:layout_marginTop="10dp"
+            />
+
+    </RadioGroup>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Status de Entrega:"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginHorizontal="20dp">
+
+        <RadioButton
+            android:id="@+id/btEmSeparacao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Em separação!"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:layout_marginTop="10dp"
+            />
+
+        <RadioButton
+            android:id="@+id/btEmTransito"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Em trânsito!"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:layout_marginTop="10dp"
+            />
+
+        <RadioButton
+            android:id="@+id/btEntregue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Entregue!"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:layout_marginTop="10dp"
+            />
+    </RadioGroup>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btAtualizarPedido"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Atualizar Pedido"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/black"
+        android:textAllCaps="false"
+        android:padding="15dp"
+        android:layout_margin="20dp"
+        android:background="@drawable/edit_box"
+        />
+
+</LinearLayout>
